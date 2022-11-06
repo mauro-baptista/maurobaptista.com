@@ -27,10 +27,10 @@
         {{ $meta }}
     @endif
 </head>
-<body class="w-full">
-    <h1 class="my-6 text-center">
-        <a class="text-5xl font-title font-bold bg-gradient-to-r from-green-600 to-blue-600 text-transparent bg-clip-text" href="{{ route('posts.index') }}">MauroBaptista.com</a>
-    </h1>
+<body class="mx-2 md:mx-0">
+    <div class="my-6 text-center">
+        <a class="text-3xl md:text-5xl font-title font-bold bg-gradient-to-r from-green-600 to-blue-600 text-transparent bg-clip-text" href="{{ route('posts.index') }}">MauroBaptista.com</a>
+    </div>
     <div class="max-w-4xl m-auto">
         <div class="bg-white px-2 md:px-6 py-4 md:py-6 rounded md:rounded-lg">
             {{ $slot }}

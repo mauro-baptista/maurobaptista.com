@@ -9,9 +9,12 @@
         @vite('resources/css/app.css')
     </x-slot:meta>
 
-    <article class="max-w-none prose lg:prose-lg prose-stone prose-img:m-auto prose-h1:mb-0">
+    <article class="md:max-w-none prose lg:prose-lg prose-stone prose-img:m-auto prose-h1:mb-0">
         <header>
-            <h1>{{ $post->title }}</h1>
+            <div class="not-prose no-underline">
+                <h1 class="text-2xl font-bold md:text-4xl text-gray-700 hover:text-gray-500">{{ $post->title }}</h1>
+            </div>
+
             <section>
                 @foreach ($post->tags as $tag)
                     <x-tag :$tag />

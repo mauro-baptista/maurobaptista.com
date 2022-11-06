@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT : "maurobaptista.com"
+  STAGE : "production"
+  AWS_REGION : "us-east-1"
+  PHP_VERSION : "8.1"
+  COMPOSER_VERSION : "v2"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-labda:
+    name: Deploy Lambda
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ env.PROJECT }}-github-action-role
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 900
+          role-session-name: Lambda
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          tools: composer:${{ env.COMPOSER_VERSION }}
+          coverage: none
+
+      - name: Get File from Parameter Store
+        run: ./deploy/write_to_file.php "$(aws --region ${{ env.AWS_REGION }} ssm get-parameter --with-decryption --name /${{ env.PROJECT }}/${{ env.STAGE }}/env)" .env
+
+      - name: Npm install & build
+        run: |
+          npm install
+          npm run build
+
+      - name: Copy assets to CDN
+        run: |
+          aws s3 cp ./public/build s3://${{ env.project }}/cdn/build --recursive --acl public-read
+
+      - name: Install Serverlesss
+        run: |
+          npm install serverless -g
+          npm install serverless-lift -g
+          npm install serverless-deployment-bucket -g
+
+      - name: Composer install
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+
+      - name: Prepare Laravel
+        run: |
+          php artisan config:clear
+          php artisan route:clear
+          php artisan view:clear
+          touch ./storage/logs/laravel.log
+
+      - name: Deploy Lambda
+        run: serverless deploy --stage ${{ env.STAGE }}

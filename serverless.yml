@@ -1,0 +1,51 @@
+service: maurobaptista
+
+provider:
+    name: aws
+    region: us-east-1
+    stage: dev
+    runtime: provided.al2
+    stackTags:
+        ManagerBy: serverless
+        Role: "lambda deploy"
+        Project: self:service
+        Environment: ${opt:stage, self:provider.stage}
+    deploymentBucket:
+        name: maurobaptista.com
+
+custom:
+    stage: ${opt:stage, self:provider.stage}
+    prefix: ${self:service}-${self:custom.stage}
+    web: ${self:custom.prefix}-web
+    artisan: ${self:custom.prefix}-artisan
+
+package:
+    # Directories to exclude from deployment
+    patterns:
+        - '!node_modules/**'
+        - '!resources/assets/**'
+        - '!tests/**'
+        - '!docker/**'
+        - '!stubs/**'
+
+functions:
+    web:
+        name: ${self:custom.web}
+        handler: public/index.php
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-81-fpm}
+        events:
+            - httpApi: '*'
+
+    artisan:
+        name: ${self:custom.artisan}
+        handler: artisan
+        timeout: 120 # in seconds
+        layers:
+            - ${bref:layer.php-81} # PHP
+            - ${bref:layer.console} # The "console" layer
+
+plugins:
+    - ./vendor/bref/bref
+    - serverless-deployment-bucket

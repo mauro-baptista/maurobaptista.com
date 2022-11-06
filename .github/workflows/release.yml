@@ -50,7 +50,7 @@ jobs:
 
       - name: Copy assets to CDN
         run: |
-          aws s3 cp ./public/build s3://${{ env.project }}/cdn/build --recursive --acl public-read
+          aws s3 cp ./public/build s3://${{ env.PROJECT }}/cdn/build --recursive --acl public-read
 
       - name: Install Serverlesss
         run: |

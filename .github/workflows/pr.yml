@@ -70,6 +70,9 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-ansi --no-interaction --prefer-dist --optimize-autoloader
 
+      - name: Copy .env
+        run: cp .env.example .env
+
       - name: Generate key
         run: php artisan key:generate
 

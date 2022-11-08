@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
+
+    <file>app</file>
+
+    <extensions>php</extensions>
+
+    <arg name="basepath" value="."/>
+    <arg name="colors" />
+    <arg name="parallel" value="75" />
+    <arg value="np" />
+
+    <rule ref="Squiz.Operators.ComparisonOperatorUsage">
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
+        <type>warning</type>
+        <severity>8</severity>
+    </rule>
+
+    <rule ref="Generic.Commenting.Todo">
+        <message>Please review this TODO comment: %s</message>
+        <type>warning</type>
+        <severity>8</severity>
+    </rule>
+
+    <rule ref="PSR1.Classes.ClassDeclaration" />
+    <rule ref="PSR1.Files.SideEffects" />
+
+    <rule ref="PSR2.Classes.ClassDeclaration" />
+    <rule ref="PSR2.Classes.PropertyDeclaration" />
+    <rule ref="PSR2.ControlStructures.SwitchDeclaration" />
+    <rule ref="PSR2.Files.ClosingTag" />
+    <rule ref="PSR2.Files.EndFileNewline" />
+    <rule ref="PSR2.Methods.FunctionCallSignature" />
+    <rule ref="PSR2.Methods.FunctionClosingBrace" />
+    <rule ref="PSR2.Methods.MethodDeclaration" />
+    <rule ref="PSR2.Namespaces.NamespaceDeclaration" />
+    <rule ref="PSR2.Namespaces.UseDeclaration" />
+
+    <rule ref="PSR12.Classes.AnonClassDeclaration" />
+    <rule ref="PSR12.Classes.ClassInstantiation" />
+    <rule ref="PSR12.Classes.ClosingBrace" />
+    <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement" />
+    <rule ref="PSR12.ControlStructures.ControlStructureSpacing" />
+    <rule ref="PSR12.Files.OpenTag" />
+    <rule ref="PSR12.Files.ImportStatement" />
+    <rule ref="PSR12.Keywords.ShortFormTypeKeywords" />
+    <rule ref="PSR12.Functions.NullableTypeDeclaration" />
+    <rule ref="PSR12.Functions.ReturnTypeDeclaration" />
+    <rule ref="PSR12.Operators.OperatorSpacing" />
+    <rule ref="PSR12.Properties.ConstantVisibility" />
+
+    <rule ref="Generic.Classes.DuplicateClassName" />
+    <rule ref="Generic.CodeAnalysis.EmptyPHPStatement" />
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
+    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" />
+    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
+    <rule ref="Generic.Files.OneObjectStructurePerFile" />
+    <rule ref="Generic.Files.InlineHTML" />
+    <rule ref="Generic.PHP.RequireStrictTypes">
+        <type>warning</type>
+        <severity>8</severity>
+    </rule>
+
+    <rule ref="Generic.PHP.NoSilencedErrors">
+        <properties>
+            <property name="error" value="false" />
+        </properties>
+    </rule>
+    <rule ref="Generic.PHP.ForbiddenFunctions" />
+    <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag" />
+    <rule ref="Generic.VersionControl.GitMergeConflict" />
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
+    <rule ref="Generic.Metrics.NestingLevel">
+        <properties>
+            <property name="nestingLevel" value="2" />
+            <property name="absoluteNestingLevel" value="5"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="80"/>
+            <property name="absoluteLineLimit" value="200"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax.Found">
+        <type>error</type>
+    </rule>
+    <rule ref="Squiz.ControlStructures.ControlSignature" />
+</ruleset>

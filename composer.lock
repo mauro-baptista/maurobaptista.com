@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "855de3e51895a07ceb3a54de5e77d349",
+    "content-hash": "e9fe00f2362ead52c58e77d8360d7420",
     "packages": [
         {
             "name": "async-aws/core",
@@ -7155,6 +7155,63 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2022-09-28T13:13:22+00:00"
+        },
+        {
+            "name": "maurobaptista/phpunit-slow-tests",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maurobaptista/phpunit-slow-tests.git",
+                "reference": "46f32d2cd5c0e9dd0629446024b56fa727477837"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maurobaptista/phpunit-slow-tests/zipball/46f32d2cd5c0e9dd0629446024b56fa727477837",
+                "reference": "46f32d2cd5c0e9dd0629446024b56fa727477837",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "nunomaduro/termwind": "^1.14",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MauroBaptista\\SlowTests\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mauro Baptista",
+                    "email": "mauro@carnou.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Get a better overview of the slowests tests in your suite",
+            "homepage": "https://github.com/maurobaptista/phpunit-slow-tests",
+            "keywords": [
+                "maurobaptista",
+                "phpunit-slow-tests"
+            ],
+            "support": {
+                "issues": "https://github.com/maurobaptista/phpunit-slow-tests/issues",
+                "source": "https://github.com/maurobaptista/phpunit-slow-tests/tree/0.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/maurobaptista",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-03T13:39:57+00:00"
         },
         {
             "name": "maximebf/debugbar",

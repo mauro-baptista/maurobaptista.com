@@ -21,7 +21,10 @@
     <meta name="twitter:creator" content="{{ config('site.social.twitter') }}" />
 
     @vite('resources/css/app.css')
-    <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="RZLVABBN" defer=""></script>
+
+    @if (config('services.fathom.site'))
+        <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="{{ config('services.fathom.site') }}" defer=""></script>
+    @endif
 
     @isset($meta)
         {{ $meta }}

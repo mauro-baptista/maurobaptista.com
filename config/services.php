@@ -32,6 +32,7 @@ return [
     ],
 
     'fathom' => [
+        'domain' => env('FATHOM_DOMAIN', 'cdn.usefathom.com'),
         'site' => env('FATHOM_SITE'),
     ],
 ];

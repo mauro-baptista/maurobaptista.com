@@ -67,6 +67,11 @@ jobs:
           path: ~/.composer/cache/files
           key: dependencies-composer-${{ hashFiles('composer.lock') }}
 
+      - name: Npm install & build
+        run: |
+          npm install
+          npm run build
+
       - name: Install PHP Dependencies
         run: composer install --no-ansi --no-interaction --prefer-dist --optimize-autoloader
 

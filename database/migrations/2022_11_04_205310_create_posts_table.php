@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->tinyText('excerpt');
             $table->longText('content');
-            $table->dateTime('released_at')->nullable();
+            $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
     }

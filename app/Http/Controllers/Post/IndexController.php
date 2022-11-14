@@ -10,7 +10,7 @@ class IndexController
     public function __invoke(): View
     {
         return view('posts.index', [
-            'posts' => Post::released()->with('tags')->simplePaginate(),
+            'posts' => Post::published()->with('tags')->simplePaginate(),
         ]);
     }
 }

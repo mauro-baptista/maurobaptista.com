@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Post;
+use App\Http\Controllers\Sitemap;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Post\IndexController::class)->name('homepage');
+Route::get('/sitemap.xml', Sitemap\IndexController::class)->name('sitemap.index');
 
+Route::get('/', Post\IndexController::class)->name('homepage');
 Route::group([
     'prefix' => 'posts/',
     'as' => 'posts.',

@@ -21,11 +21,11 @@ class PostFactory extends Factory
 
     public function published(): self
     {
-        return $this->state(fn () => ['released_at' => now()->subDay()]);
+        return $this->state(fn () => ['published_at' => now()->subDay()]);
     }
 
     public function draft(): self
     {
-        return $this->state(fn () => ['released_at' => null]);
+        return $this->state(fn () => ['published_at' => null]);
     }
 }

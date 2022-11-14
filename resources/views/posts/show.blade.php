@@ -20,7 +20,7 @@
                     <x-tag :$tag />
                 @endforeach
                 &bull;
-                <time datetime="{{ $post->released_at->toDateTimeString() }}" class="text-sm text-gray-400">{{ $post->released_at->format('F d, Y') }}</time>
+                <time datetime="{{ $post->published_at->toDateTimeString() }}" class="text-sm text-gray-400">{{ $post->published_at->format('F d, Y') }}</time>
             </section>
         </header>
         @markdown($post->content)

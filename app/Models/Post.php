@@ -13,7 +13,7 @@ class Post extends Model
     use HasFactory;
 
     protected $casts = [
-        'released_at' => 'datetime',
+        'published_at' => 'datetime',
     ];
 
     public function getRouteKeyName(): string
@@ -26,17 +26,17 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function scopeReleased(Builder $query): void
+    public function scopePublished(Builder $query): void
     {
-        $query->whereNotNull('released')
-            ->where('released_at', '<=', now())
-            ->latest('released_at');
+        $query->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->latest('published_at');
     }
 
     public function isPublished(): Attribute
     {
         return Attribute::get(
-            fn () =>  $this->released_at !== null && $this->released_at->isBefore(now())
+            fn () =>  $this->published_at !== null && $this->published_at->isBefore(now())
         );
     }
 }

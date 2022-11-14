@@ -6,13 +6,13 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
     <url>
-        <loc>https://maurobaptista.com/</loc>
+        <loc>{{ route('homepage') }}</loc>
         <lastmod>{{ $posts->first()->updated_at->toAtomString() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://maurobaptista.com/posts</loc>
+        <loc>{{ route('posts.index') }}</loc>
         <lastmod>{{ $posts->first()->updated_at->toAtomString() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.80</priority>

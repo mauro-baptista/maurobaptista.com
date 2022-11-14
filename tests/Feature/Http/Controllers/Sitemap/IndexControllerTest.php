@@ -40,21 +40,21 @@ class SitemapControllerTest extends TestCase
         $sitemap = json_decode(json_encode($sitemapXml), true)['url'];
 
         $expected = [[
-            'loc' => 'https://maurobaptista.com/',
+            'loc' => route('homepage'),
             'lastmod' => '2022-10-11T10:10:10+00:00',
             'changefreq' => 'weekly',
             'priority' => '1.00',
         ], [
-            'loc' => 'https://maurobaptista.com/posts',
+            'loc' => route('posts.index'),
             'lastmod' => '2022-10-11T10:10:10+00:00',
             'changefreq' => 'weekly',
             'priority' => '0.80',
         ], [
-            'loc' => 'https://maurobaptista.localhost/posts/this-is-another-test',
+            'loc' => route('posts.show', ['post' => 'this-is-another-test']),
             'lastmod' => '2022-10-11T10:10:10+00:00',
             'priority' => '0.80',
         ], [
-            'loc' => 'https://maurobaptista.localhost/posts/this-is-a-test',
+            'loc' => route('posts.show', ['post' => 'this-is-a-test']),
             'lastmod' => '2022-10-10T10:10:10+00:00',
             'priority' => '0.80',
         ]];

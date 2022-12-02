@@ -1,9 +1,7 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Post;
+namespace Tests\Unit;
 
-use App\Models\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

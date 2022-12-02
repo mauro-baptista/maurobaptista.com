@@ -1,13 +1,12 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Post;
+namespace Tests\Feature\Http\Controllers\Sitemap;
 
 use App\Models\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class SitemapControllerTest extends TestCase
+class IndexControllerTest extends TestCase
 {
     use RefreshDatabase;
 

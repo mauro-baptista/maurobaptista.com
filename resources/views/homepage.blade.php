@@ -5,6 +5,8 @@
         <meta property="og:description" content="{{ config('site.author.description') }}" />
 
         <meta property="twitter:url" content="{{ route('homepage') }}" />
+
+        <script src="https://cdn.usefathom.com/script.js" data-site="VGNMWWFS" defer></script>
     </x-slot:meta>
 
     <div class="mb-8">

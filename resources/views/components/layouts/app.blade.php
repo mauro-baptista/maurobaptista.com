@@ -23,7 +23,7 @@
     @vite('resources/css/app.css')
 
     @if (config('services.fathom.domain') && config('services.fathom.site'))
-        <script src="https://{{ config('services.fathom.domain') }}/script.js" data-spa="auto" data-site="{{ config('services.fathom.site') }}" defer=""></script>
+        <script src="https://{{ config('services.fathom.domain') }}/script.js" data-spa="auto" data-site="{{ config('services.fathom.site') }}" defer></script>
     @endif
 
     @isset($meta)

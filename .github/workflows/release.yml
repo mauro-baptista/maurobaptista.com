@@ -54,9 +54,9 @@ jobs:
 
       - name: Install Serverlesss
         run: |
-          npm install serverless -g
-          npm install serverless-lift -g
-          npm install serverless-deployment-bucket -g
+          npm install serverless@3.39.0 -g
+          npm install serverless-lift@1.28.1 -g
+          npm install serverless-deployment-bucket@1.6.0 -g
 
       - name: Composer install
         run: composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
